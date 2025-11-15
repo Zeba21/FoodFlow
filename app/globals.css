@@ -1,0 +1,118 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Light mode only theme - removed dark mode */
+  --color-primary: hsl(16, 92%, 55%);
+  --color-primary-foreground: hsl(0, 0%, 100%);
+  
+  --color-secondary: hsl(220, 14%, 96%);
+  --color-secondary-foreground: hsl(220, 9%, 9%);
+  
+  --color-muted: hsl(220, 14%, 96%);
+  --color-muted-foreground: hsl(220, 9%, 46%);
+  
+  --color-accent: hsl(220, 14%, 96%);
+  --color-accent-foreground: hsl(220, 9%, 9%);
+  
+  --color-background: hsl(0, 0%, 100%);
+  --color-foreground: hsl(220, 9%, 9%);
+  
+  --color-card: hsl(0, 0%, 100%);
+  --color-card-foreground: hsl(220, 9%, 9%);
+  
+  --color-popover: hsl(0, 0%, 100%);
+  --color-popover-foreground: hsl(220, 9%, 9%);
+  
+  --color-border: hsl(220, 13%, 91%);
+  --color-input: hsl(220, 13%, 91%);
+  --color-ring: hsl(16, 92%, 55%);
+  
+  --color-destructive: hsl(0, 84%, 60%);
+  --color-destructive-foreground: hsl(0, 0%, 100%);
+  
+  /* Status colors for tracking */
+  --color-status-available: hsl(0, 84%, 60%);
+  --color-status-accepted: hsl(45, 93%, 47%);
+  --color-status-in-transit: hsl(45, 93%, 47%);
+  --color-status-delivered: hsl(142, 71%, 45%);
+  
+  --radius: 0.5rem;
+}
+
+* {
+  border-color: theme(colors.border);
+}
+
+body {
+  background-color: theme(colors.background);
+  color: theme(colors.foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Added smooth animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+/* Added Leaflet map styles for proper rendering */
+/* Leaflet map styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.leaflet-popup-content {
+  margin: 8px;
+  min-width: 150px;
+}
+
+/* Custom marker styles */
+.custom-marker {
+  background: transparent;
+  border: none;
+}
+
+/* Map controls */
+.leaflet-control-zoom a {
+  background-color: white;
+  color: hsl(220, 9%, 9%);
+  border: 1px solid hsl(220, 13%, 91%);
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: hsl(220, 14%, 96%);
+}
+
+/* Smooth transitions for map animations */
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+  transition: all 0.3s ease-in-out;
+}
